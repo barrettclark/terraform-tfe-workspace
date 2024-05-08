@@ -8,22 +8,18 @@ terraform {
   }
 }
 
-variable "organization_name" {
-  description = "Please provide the organization name"
-  type        = string
-}
-variable "project_id" {
-  description = "Please provide the project ID"
-  type        = string
-}
-variable "workspace_name" {
-  description = "Please provide the workspace name"
-  type        = string
-}
-variable "terraform_version" {
-  description = "Please provide the desired Terraform version"
-  type        = string
-}
+# variable "organization_name" {
+#   description = "Please provide the organization name"
+#   type        = string
+# }
+# variable "project_id" {
+#   description = "Please provide the project ID"
+#   type        = string
+# }
+# variable "workspace_name" {
+#   description = "Please provide the workspace name"
+#   type        = string
+# }
 variable "tag_names" {
   description = "Please list the tags for this workspace, if any"
   type        = list(string)
@@ -31,10 +27,9 @@ variable "tag_names" {
 }
 
 module "nocode-tfe-workspace" {
-  source            = "./modules/tfe-workspace"
-  workspace_name    = var.workspace_name
-  organization_name = var.organization_name
-  project_id        = var.project_id
-  terraform_version = var.terraform_version
-  tag_names         = var.tag_names
+  source = "./modules/tfe-workspace"
+  # workspace_name    = var.workspace_name
+  # organization_name = var.organization_name
+  # project_id        = var.project_id
+  tag_names = var.tag_names
 }
